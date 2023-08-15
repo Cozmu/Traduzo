@@ -13,7 +13,8 @@ class LanguageModel(AbstractModel):
             "acronym": self.data["acronym"],
         }
 
-    # Req. 3
     @classmethod
     def list_dicts(cls):
-        raise NotImplementedError
+        get_all_languages = cls._collection.find()
+        return [cls(langague).to_dict() for langague in get_all_languages]
+
